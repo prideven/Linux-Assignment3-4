@@ -1147,12 +1147,15 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 		ecx = (atomic64_read(&exit_duration) & 0xFFFFFFFF);
 		printk(KERN_INFO "updated low 32 bits in ecx=%u", ecx);
 
+		
+		
+	//Assignment2 starts here-->By preeti 
 	} else if (eax == 0x4ffffffe) {
 	
 	uint32_t specific_count;
-	// if ecx is between 0 to 68
+	// if ecx is between 0 to 68 as defined in SDM
 		if(ecx>=0 && ecx<=68 && ecx!=65 && ecx!=42 && ecx!=38 && ecx!=35){
-          // if ecx is not enabled in KVM retrun 0 for all registers
+          // We check if ecx enabled, if it is not enabled in KVM we need retrun 0 in eax,ebx,ecx,edx registers
 			if(eax==3 || eax==4 || eax==5 || eax==6 || eax==16 || eax==11 || eax==17 || eax==16 || eax==33 || eax==34 || eax==51 || eax==54 || eax==63 || eax== 64 || eax==66 || eax== 67 || eax== 68 ){
 				printk(KERN_INFO "exit reason number=%u not enabled in KVM", ecx);
 				eax=0;
@@ -1161,15 +1164,15 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 				edx=0;
 
 			}else{
-				//else return the exit count
+				//we return the exit count occurred for each input
 				eax = atomic64_read(&individual_exit_counter[ecx]);
-		       printk(KERN_INFO "exit reason number=%u and exit counter eax=%u", ecx, eax);
+		       printk(KERN_INFO "exit reason number is=%u and exit counter eax=%u", ecx, eax);
 		       specific_count = atomic64_read(&individual_exit_counter[ecx]);
-		       printk(KERN_INFO "exit number %d exits= %d\n",ecx,specific_count);
+		       printk(KERN_INFO "exit number for %d exits= %d\n",ecx,specific_count);
 			}
 		}else{
-			//else return 0 in all %eax, %ebx, %ecx registers and return 0xFFFFFFFF in %edx	
-		       printk(KERN_INFO "exit reason number=%u not defined in SDM", ecx);
+			//we will 0 in all %eax, %ebx, %ecx registers and return 0xFFFFFFFF in %edx if not defined in the SDM	
+		       printk(KERN_INFO "exit reason number=%u is not defined in the SDM", ecx);
 		       eax=0;
 		       ebx=0;
 		       ecx=0;
