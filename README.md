@@ -161,14 +161,17 @@ Please find the screenshot below of the input and its corresponding exit:
 
 
 #   Q3. Comment on the frequency of exits – does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations? Approximately how many exits does a full VM boot entail?
--->We could see that the number exits increase at in an  unstable rate.We could see input such as 1-external interrupts, 30- I/O instructions the number of exits are higher as compared to others.
+-->We could see that the number exits increase at an unstable rate.We could see during each run the inputs such as 1-external interrupts, 30- I/O instructions the number of exits are higher as compared to others.
+We could see more exits performed during certain operations such as external interrupt, I/O instruction the number of exits are high. For certain operations such as Access to GDTR/IDTR the exits is low.The number of exits enatiled by the after reboot is 217,420.
 
 
 
 
 #   Q4.Of the exit types defined in the SDM, which are the most frequent? Least?
 
-From running the test script the most frequent exit type observed in the inner VM was 48-EPT Viloation instruction exit at around 333068 exits, and we could see many exit that were 0, such as 2-triple fault, 8-NMI Window, 9-task switch, 44-APIC access, 45-Virtualized EOI, 67-UMWait, 68-TPause, etc.
+-->From running the test script the most frequent exit type observed in the inner VM was 48-EPT Viloation instruction around 333068 exits, 30-I/O instruction,32-WRMSR
+
+we could see many exit that were 0, such as 2-triple fault, 8-NMI Window, 9-task switch, 44-APIC access, 45-Virtualized EOI, 67-UMWait, 68-TPause, etc.
 
 
 
@@ -198,7 +201,7 @@ Settings:
 
 *list the moduels in outer VM as shown below:
 
-![Test Output](Modules.png)
+![Test Output](Moduels.png)
 
 *we first accessed and removed the kvm-intel.ko module, in our modified kernel version, 5.10.0-rc1+, which has the exit settings for our machine.
 
