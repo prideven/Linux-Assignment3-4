@@ -71,7 +71,7 @@
 MODULE_AUTHOR("Qumranet");
 MODULE_LICENSE("GPL");
 
-/*CMPE283 changes*/
+/*code for returning the values of each register, we add the array value*/
 extern atomic64_t exit_counters;
 extern atomic64_t exit_duration;
 extern atomic64_t individual_exit_counter[69];
