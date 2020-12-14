@@ -138,13 +138,13 @@ Steps I use to solve above error:
     sudo apt-get install cpuid
 
 
-5.	Create test program name as Test_Assignment3.c file inside inner vm to test changes of cupid.c and vmx.c 
+5.	Create test program name as testFinal.c file inside inner vm to test changes of cupid.c and vmx.c 
 
-6.	Compile this Test_Assignment3.cfile using gcc and make it executable:
+6.	Compile this testFinal.cfile using gcc and make it executable:
 
-    gcc Test_Assignment3.c-o test
+    gcc Test_TestFinal.c-o test
 
-7.	Now run this test3 executable file to check the output as following on terminal:
+7.	Now run this test executable file to check the output as following on terminal:
 
     ./test  
     
@@ -162,7 +162,7 @@ Please find the screenshot below of the input and its corresponding exit:
 
 #   Q3. Comment on the frequency of exits – does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations? Approximately how many exits does a full VM boot entail?
 -->We could see that the number exits increase at an unstable rate.We could see during each run the inputs such as 1-external interrupts, 30- I/O instructions the number of exits are higher as compared to others.
-We could see more exits performed during certain operations such as external interrupt, I/O instruction the number of exits are high. For certain operations such as Access to GDTR/IDTR the exits is low.The number of exits enatiled by the after reboot is 217,420.
+We could see more exits performed during certain operations such as external interrupt, I/O instruction the number of exits are high. For certain operations such as Access to GDTR/IDTR the exits is low.The number of exits enatiled by the VMM is 2217420.
 
 
 
@@ -268,4 +268,4 @@ when ept setting was set to default value of 1.
 
 # Difference observed:
 
-In nested paging mode, ept=1, the speed of the VM was greater, whereas In Shodow paging mode, ept=0 the sped of the VM is slower.Also more exits were observed in nested paging as compared to shaodow paging.This is beacuse when shadow paging is enabled, page translation happens, this causes more exit in the VM.
+In nested paging mode, ept=1, the speed of the VM was greater, whereas In Shodow paging mode, ept=0 the speed of the VM is slower.Also more exits were observed in nested paging as compared to shaodow paging.This is beacuse when shadow paging is enabled, page translation happens, this causes more exit in the VM.
