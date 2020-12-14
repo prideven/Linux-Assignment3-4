@@ -226,13 +226,14 @@ Below are the screenshot after changing it to 0:
 
 ![Test Output](EPTwithZero.png)
 
-![Test Output](2a.png)
 
-![Test Output](3a.png)
+![Test Output](31&32Exit.png)
 
-![Test Output](4a.png)
 
-![Test Output](5a.png)
+![Test Output](32Exit.png)
+
+
+![Test Output](48&49.png)
 
 ![Test Output](6a.png)
 
@@ -251,21 +252,17 @@ when ept setting was set to default value of 1.
 
 4.Few inputs with exit observed as provided in screenshot above:
 
-    -->For exit 14-INVLPG.
-       i. For ept=1, nested paging enabled, total exits for exit 14 is 0.
-       ii. For ept=0, nested paging disabled, and shadow paging enabled, total exit for exit 14 is 226971 (3769b HEX)
+   For exit 32-WRMSR
+       i. For ept=1, nested paging enabled, total exits for exit 32 is 35722
+       ii. For ept=0, nested paging disabled, and shadow paging enabled, total exit for exit 32 is 52530
        
-    -->For exit 28-Control-register accesses
-
-       i. For ept=1, number of exits for exit 28 is 14088 (3708 HEX).
-       ii. For ept=0, number of exits for exit 28 is 12521307 (bf0f5b HEX). 
-       iii. Considering the machine is working in shadow paging mode, the
-
-
+   For exit 1-External Interrupt
+      i. For ept=1, number of exits for exit 1 is 42541
+      ii. For ept=0, number of exits for exit 28 is 52725 
 
 
 
 
 # Difference observed:
 
-In nested paging mode, ept=1, the speed of the VM was greater, whereas In Shodow paging mode, ept=0 the sped of the VM is slower.Also more exits were observed in nested paging as compared to shaodow paging.This is beacuse when shadow paging is enabled page translation happens, this causes more exit in the VM.
+In nested paging mode, ept=1, the speed of the VM was greater, whereas In Shodow paging mode, ept=0 the sped of the VM is slower.Also more exits were observed in nested paging as compared to shaodow paging.This is beacuse when shadow paging is enabled, page translation happens, this causes more exit in the VM.
