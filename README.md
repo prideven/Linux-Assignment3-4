@@ -230,12 +230,12 @@ Below are the screenshot after changing it to 0:
 ![Test Output](31&32Exit.png)
 
 
-![Test Output](32Exit.png)
+![Test Output](32ndExit.png)
 
 
 ![Test Output](48&49.png)
 
-![Test Output](6a.png)
+
 
 
 
